@@ -1,99 +1,64 @@
+import { graphql, useStaticQuery } from "gatsby"
+import { BgImage } from "gbimage-bridge"
+import { getImage } from "gatsby-plugin-image"
 import * as React from "react"
-import { Link } from "gatsby"
-import Data from "../interfaces/index"
-// import { StaticImage } from "gatsby-plugin-image"
 
-// import Layout from "../components/layout"
-// import Seo from "../components/seo"
-// import { useStaticQuery, graphql } from "gatsby"
+import ContentBoxes from "../components/ContentBoxes"
+import Layout from "../components/Layout"
+import Title from "../components/Title"
+import Data from "../interfaces/Data"
 
-const query = `query {
-  navBarLinksCollection {
-    items {
-      linkText
-      isStart
-    }
-  }
-  titleText(id: "1yZLJ3q8tT5SkmV7bRxUFp") {
-    topTag
-    mainTag
-    bottomTag
-    demoButton
-  }
-  contentBoxesCollection {
-    items {
-      contentTitle
-      contentDesc
-      contentImg {
-        title
-        url
-      }
-    }
-  }
-}`
-
-const access_token = "7-ewF0O2_aSRwWizFUj9y3ntG8cq6lsQzgEB0UEquM8"
-const spaceID = "1fookciohp77"
+import "../styles/global.scss" // move to head
+// import * as styles from "../styles/index.module.scss"
 
 export default function IndexPage() {
-  const [data, setData] = React.useState<Data>()
-
-  React.useEffect(() => {
-    fetch(
-      `https://graphql.contentful.com/content/v1/spaces/${spaceID}?access_token=${access_token}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ query }),
+  const {
+    backgroundImg,
+    allContentfulNavBarLinks,
+    contentfulTitleText,
+    allContentfulContentBoxes,
+  } = useStaticQuery<Data>(graphql`
+    query {
+      backgroundImg: file(relativePath: { eq: "hero-background.png" }) {
+        childImageSharp {
+          gatsbyImageData(width: 2000)
+        }
       }
-    )
-      .then(res => res.json())
-      .then(json => setData(json.data))
-  }, [])
+      allContentfulNavBarLinks(filter: { isStart: { eq: true } }) {
+        nodes {
+          linkText
+        }
+      }
+      contentfulTitleText {
+        topTag
+        mainTag
+        bottomTag
+        demoButton
+      }
+      allContentfulContentBoxes {
+        nodes {
+          contentTitle
+          contentDesc
+          contentImg {
+            title
+            gatsbyImageData(width: 200)
+          }
+        }
+      }
+    }
+  `)
 
-  console.log(data)
+  const image = getImage(backgroundImg.childImageSharp)
 
   return (
-    <main>
-      <nav>
-        {data?.navBarLinksCollection.items
-          .reverse()
-          .map(({ linkText, isStart }) => (
-            <Link key={linkText} className={isStart ? "startLink" : "link"} to="#">
-              {linkText}
-            </Link>
-          ))}
-      </nav>
-      <div className="title-section">
-        <h4>{data?.titleText.topTag}</h4>
-        <h1>{data?.titleText.mainTag}</h1>
-        <p>{data?.titleText.bottomTag}</p>
-        <div>
-          {data &&
-            data.navBarLinksCollection.items.map(
-              ({ linkText, isStart }) =>
-                isStart && (
-                  <Link key={linkText} to="#">
-                    {linkText}
-                  </Link>
-                )
-            )}
-          <Link to="#">{data?.titleText.demoButton}</Link>
-        </div>
-      </div>
-      <div className="content-boxes">
-        {data?.contentBoxesCollection.items.map(
-          ({ contentTitle, contentDesc, contentImg }) => (
-            <div key={contentTitle}>
-              <h4>{contentTitle}</h4>
-              <p>{contentDesc}</p>
-              <img src={contentImg.url} alt={contentImg.title} />
-            </div>
-          )
-        )}
-      </div>
-    </main>
+    <BgImage image={image}>
+      <Layout>
+        <Title
+          data={contentfulTitleText}
+          startText={allContentfulNavBarLinks}
+        />
+        <ContentBoxes data={allContentfulContentBoxes} />
+      </Layout>
+    </BgImage>
   )
 }
