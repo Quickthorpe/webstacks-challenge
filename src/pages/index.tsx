@@ -1,14 +1,15 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import Data from "../interfaces/index"
 // import Img from "gatsby-image"
-import { StaticImage } from "gatsby-plugin-image"
+import { StaticImage, getImage } from "gatsby-plugin-image"
+import { BgImage } from "gbimage-bridge"
 
 import * as styles from "../styles/index.module.scss"
+// import BackgroundImage from "gatsby-background-image"
 
 // import Layout from "../components/layout"
 // import Seo from "../components/seo"
-// import { useStaticQuery, graphql } from "gatsby"
 
 const query = `query {
   navBarLinksCollection {
@@ -39,6 +40,18 @@ const access_token = "7-ewF0O2_aSRwWizFUj9y3ntG8cq6lsQzgEB0UEquM8"
 const spaceID = "1fookciohp77"
 
 export default function IndexPage() {
+  const { backgroundImg } = useStaticQuery(graphql`
+    query {
+      backgroundImg: file(relativePath: { eq: "hero-background.png" }) {
+        childImageSharp {
+          gatsbyImageData(width: 2000)
+        }
+      }
+    }
+  `)
+
+  const image = getImage(backgroundImg)
+
   const [data, setData] = React.useState<Data>()
 
   React.useEffect(() => {
@@ -58,48 +71,50 @@ export default function IndexPage() {
 
   return (
     <main className={styles.main}>
-      <nav>
-        <StaticImage src="../images/brackets-logo.svg" alt="Brackets Logo" />
-        {data?.navBarLinksCollection.items
-          .reverse()
-          .map(({ linkText, isStart }) => (
-            <Link
-              key={linkText}
-              className={isStart ? "startLink" : "link"}
-              to="#"
-            >
-              {linkText}
-            </Link>
-          ))}
-      </nav>
-      <div className="title-section">
-        <h4>{data?.titleText.topTag}</h4>
-        <h1>{data?.titleText.mainTag}</h1>
-        <p>{data?.titleText.bottomTag}</p>
-        <div>
-          {data &&
-            data.navBarLinksCollection.items.map(
-              ({ linkText, isStart }) =>
-                isStart && (
-                  <Link key={linkText} to="#">
-                    {linkText}
-                  </Link>
-                )
-            )}
-          <Link to="#">{data?.titleText.demoButton}</Link>
+      <BgImage image={image}>
+        <nav>
+          <StaticImage src="../images/brackets-logo.svg" alt="Brackets Logo" />
+          {data?.navBarLinksCollection.items
+            .reverse()
+            .map(({ linkText, isStart }) => (
+              <Link
+                key={linkText}
+                className={isStart ? "startLink" : "link"}
+                to="#"
+              >
+                {linkText}
+              </Link>
+            ))}
+        </nav>
+        <div className="title-section">
+          <h4>{data?.titleText.topTag}</h4>
+          <h1>{data?.titleText.mainTag}</h1>
+          <p>{data?.titleText.bottomTag}</p>
+          <div>
+            {data &&
+              data.navBarLinksCollection.items.map(
+                ({ linkText, isStart }) =>
+                  isStart && (
+                    <Link key={linkText} to="#">
+                      {linkText}
+                    </Link>
+                  )
+              )}
+            <Link to="#">{data?.titleText.demoButton}</Link>
+          </div>
         </div>
-      </div>
-      <div className="content-boxes">
-        {data?.contentBoxesCollection.items.map(
-          ({ contentTitle, contentDesc, contentImg }) => (
-            <div key={contentTitle}>
-              <h4>{contentTitle}</h4>
-              <p>{contentDesc}</p>
-              <img src={contentImg.url} alt={contentImg.title} />
-            </div>
-          )
-        )}
-      </div>
+        <div className="content-boxes">
+          {data?.contentBoxesCollection.items.map(
+            ({ contentTitle, contentDesc, contentImg }) => (
+              <div key={contentTitle}>
+                <h4>{contentTitle}</h4>
+                <p>{contentDesc}</p>
+                <img src={contentImg.url} alt={contentImg.title} />
+              </div>
+            )
+          )}
+        </div>
+      </BgImage>
     </main>
   )
 }
