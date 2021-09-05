@@ -2,15 +2,10 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const contentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_CODE,
-}
-
 module.exports = {
   siteMetadata: {
-    title: `Webstacks Challenge`,
-    description: `Coding challenge for webstacks developer application`,
+    title: `Brackets`,
+    description: `America's #1 Rated Adventure Program`,
     author: `Daniel Slovinsky`,
   },
   plugins: [
@@ -36,19 +31,22 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `brackets`,
+        short_name: `brackets`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#000000`,
+        theme_color: `#000000`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`, // No Brackets icon provided
       },
     },
     `gatsby-plugin-gatsby-cloud`,
     {
       resolve: "gatsby-source-contentful",
-      options: contentfulConfig,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_CODE,
+      },
     },
   ],
 }

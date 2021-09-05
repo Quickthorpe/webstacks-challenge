@@ -52,7 +52,7 @@ export default function IndexPage() {
 
   return (
     <BgImage image={image}>
-      <Layout>
+      <Layout pageTitle="Home">
         <Title
           data={contentfulTitleText}
           startText={allContentfulNavBarLinks}
