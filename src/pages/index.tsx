@@ -1,7 +1,10 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import Data from "../interfaces/index"
-// import { StaticImage } from "gatsby-plugin-image"
+// import Img from "gatsby-image"
+import { StaticImage } from "gatsby-plugin-image"
+
+import * as styles from "../styles/index.module.scss"
 
 // import Layout from "../components/layout"
 // import Seo from "../components/seo"
@@ -53,15 +56,18 @@ export default function IndexPage() {
       .then(json => setData(json.data))
   }, [])
 
-  console.log(data)
-
   return (
-    <main>
+    <main className={styles.main}>
       <nav>
+        <StaticImage src="../images/brackets-logo.svg" alt="Brackets Logo" />
         {data?.navBarLinksCollection.items
           .reverse()
           .map(({ linkText, isStart }) => (
-            <Link key={linkText} className={isStart ? "startLink" : "link"} to="#">
+            <Link
+              key={linkText}
+              className={isStart ? "startLink" : "link"}
+              to="#"
+            >
               {linkText}
             </Link>
           ))}
