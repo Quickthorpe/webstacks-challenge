@@ -5,10 +5,10 @@ import Data from "../interfaces/index"
 import { StaticImage, getImage } from "gatsby-plugin-image"
 import { BgImage } from "gbimage-bridge"
 
+import "../styles/global.scss"
 import * as styles from "../styles/index.module.scss"
 // import BackgroundImage from "gatsby-background-image"
 
-// import Layout from "../components/layout"
 // import Seo from "../components/seo"
 
 const query = `query {
