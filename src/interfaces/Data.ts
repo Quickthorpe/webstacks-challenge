@@ -1,3 +1,5 @@
+import type { IGatsbyImageData } from "gatsby-plugin-image"
+
 interface navBarLink {
   linkText: string
   isStart: boolean
@@ -15,16 +17,19 @@ interface contentBox {
   contentDesc: string
   contentImg: {
     title: string
-    url: string
+    gatsbyImageData: IGatsbyImageData
   }
 }
 
 export default interface Data {
-  navBarLinksCollection: {
-    items: navBarLink[]
+  backgroundImg: {
+    childImageSharp: IGatsbyImageData
   }
-  titleText: TitleText
-  contentBoxesCollection: {
-    items: contentBox[]
+  allContentfulNavBarLinks: {
+    nodes: navBarLink[]
+  }
+  contentfulTitleText: TitleText
+  allContentfulContentBoxes: {
+    nodes: contentBox[]
   }
 }
