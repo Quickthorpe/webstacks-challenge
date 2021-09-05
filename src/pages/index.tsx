@@ -36,8 +36,8 @@ const query = `query {
   }
 }`
 
-const access_token = "7-ewF0O2_aSRwWizFUj9y3ntG8cq6lsQzgEB0UEquM8"
-const spaceID = "1fookciohp77"
+const access_token = process.env.CONTENTFUL_ACCESS_CODE
+const spaceID = process.env.CONTENTFUL_SPACE_ID
 
 export default function IndexPage() {
   const { backgroundImg } = useStaticQuery(graphql`
