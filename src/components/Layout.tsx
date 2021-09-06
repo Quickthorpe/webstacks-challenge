@@ -1,6 +1,6 @@
 import * as React from "react"
 import NavBar from "./NavBar"
-import Seo from "./Seo"
+import Head from "./Head"
 
 import "../styles/global.scss"
 
@@ -11,7 +11,7 @@ export default function Layout({
 
   return (
     <main>
-      <Seo pageTitle={pageTitle} />
+      <Head pageTitle={pageTitle} />
       <NavBar />
       {children}
     </main>
