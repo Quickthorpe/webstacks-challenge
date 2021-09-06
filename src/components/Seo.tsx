@@ -38,6 +38,23 @@ export default function Seo({
       <meta name="description" content={metaDescription} />
       <meta property="og:title" content={`${pageTitle} | ${siteName}`} />
       <meta property="og:description" content={metaDescription} />
+      <link
+        key="preconnect-google-fonts"
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossOrigin="anonymous"
+      />
+      <link
+        key="preconnect-fonts-gstatic"
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="anonymous"
+      />
+      <link
+        key="google-fonts"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
     </Helmet>
   )
 }
