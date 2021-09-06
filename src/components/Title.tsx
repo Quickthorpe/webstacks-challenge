@@ -2,6 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Data from "../interfaces/Data"
+import Arrow from "../assets/arrow.svg"
+
+import * as styles from "../styles/components/title.module.scss"
 
 export default function Title({
   data,
@@ -11,17 +14,21 @@ export default function Title({
   startText: Data["allContentfulNavBarLinks"]
 }) {
   return (
-    <div>
-      <h4>{data?.topTag}</h4>
+    <div className={styles.title}>
+      <h5>{data?.topTag}</h5>
       <h1>{data?.mainTag}</h1>
       <p>{data?.bottomTag}</p>
-      <div>
+      <div className={styles.title_links}>
         {startText.nodes.map(({ linkText }) => (
-          <Link key={linkText} to="#">
+          <Link key={linkText} className={styles.start} to="#">
             {linkText}
+            <Arrow />
           </Link>
         ))}
-        <Link to="#">{data?.demoButton}</Link>
+        <Link className={styles.demo} to="#">
+          {data?.demoButton}
+          <Arrow />
+        </Link>
       </div>
     </div>
   )
