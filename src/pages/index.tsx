@@ -8,7 +8,6 @@ import Layout from "../components/Layout"
 import Title from "../components/Title"
 import Data from "../interfaces/Data"
 
-import "../styles/global.scss" // move to head
 // import * as styles from "../styles/index.module.scss"
 
 export default function IndexPage() {
@@ -51,14 +50,16 @@ export default function IndexPage() {
   const image = getImage(backgroundImg.childImageSharp)
 
   return (
-    <BgImage image={image}>
-      <Layout>
+    // <BgImage image={image}>
+    <>
+      <Layout pageTitle="Home">
         <Title
           data={contentfulTitleText}
           startText={allContentfulNavBarLinks}
         />
         <ContentBoxes data={allContentfulContentBoxes} />
       </Layout>
-    </BgImage>
+      {/* </BgImage> */}
+    </>
   )
 }
