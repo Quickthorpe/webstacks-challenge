@@ -2,7 +2,7 @@ import * as React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-export default function Seo({
+export default function Head({
   pageDescription = "",
   lang = "en",
   pageTitle,

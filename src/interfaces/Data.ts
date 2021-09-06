@@ -13,6 +13,7 @@ interface TitleText {
 }
 
 interface contentBox {
+  contentful_id: string
   contentTitle: string
   contentDesc: string
   contentImg: {

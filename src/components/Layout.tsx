@@ -1,17 +1,17 @@
 import * as React from "react"
 import NavBar from "./NavBar"
-import Seo from "./Seo"
+import Head from "./Head"
 
 import "../styles/global.scss"
+import * as styles from "../styles/layout.module.scss"
 
 export default function Layout({
   pageTitle,
   children,
-}: React.PropsWithChildren<{pageTitle: string}>) {
-
+}: React.PropsWithChildren<{ pageTitle: string }>) {
   return (
-    <main>
-      <Seo pageTitle={pageTitle} />
+    <main className={styles.main}>
+      <Head pageTitle={pageTitle} />
       <NavBar />
       {children}
     </main>

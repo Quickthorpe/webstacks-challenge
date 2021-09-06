@@ -8,8 +8,6 @@ import Layout from "../components/Layout"
 import Title from "../components/Title"
 import Data from "../interfaces/Data"
 
-// import * as styles from "../styles/index.module.scss"
-
 export default function IndexPage() {
   const {
     backgroundImg,
@@ -34,8 +32,9 @@ export default function IndexPage() {
         bottomTag
         demoButton
       }
-      allContentfulContentBoxes {
+      allContentfulContentBoxes(sort: {fields: createdAt}) {
         nodes {
+          contentful_id
           contentTitle
           contentDesc
           contentImg {

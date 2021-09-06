@@ -1,6 +1,11 @@
 import React from "react"
+import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
+import Arrow from "../assets/arrow.svg"
 import Data from "../interfaces/Data"
+
+import * as styles from "../styles/components/boxes.module.scss"
 
 export default function ContentBoxes({
   data,
@@ -8,15 +13,29 @@ export default function ContentBoxes({
   data: Data["allContentfulContentBoxes"]
 }) {
   return (
-    <div className="content-boxes">
-      {data.nodes.map(({ contentTitle, contentDesc, contentImg }) => {
+    <div className={styles.boxes}>
+      {data.nodes.map(({ contentTitle, contentDesc, contentImg, contentful_id }) => {
         const image = getImage(contentImg.gatsbyImageData)
 
+        console.log(contentful_id)
+
         return (
-          <div key={contentTitle}>
-            <h4>{contentTitle}</h4>
-            <p>{contentDesc}</p>
-            {image && <GatsbyImage image={image} alt={contentImg.title} />}
+          <div key={contentTitle} className={`${styles.box} ${styles[`_${contentful_id}`]}`}>
+            <div className={styles.box_text}>
+              <h4>{contentTitle}</h4>
+              <p>{contentDesc}</p>
+              <Link to="#" className={styles.link}>
+                Learn more
+                <Arrow />
+              </Link>
+            </div>
+            {image && (
+              <GatsbyImage
+                image={image}
+                alt={contentImg.title}
+                className={styles.photo}
+              />
+            )}
           </div>
         )
       })}
