@@ -8,6 +8,8 @@ import Layout from "../components/Layout"
 import Title from "../components/Title"
 import Data from "../interfaces/Data"
 
+import * as styles from "../styles/index.module.scss"
+
 export default function IndexPage() {
   const {
     backgroundImg,
@@ -49,8 +51,9 @@ export default function IndexPage() {
   const image = getImage(backgroundImg.childImageSharp)
 
   return (
-    // <BgImage image={image}>
-    <>
+    <BgImage image={image}>
+      <div className={`${styles.mask} ${styles.vertical}`} />
+      <div className={`${styles.mask} ${styles.horizontal}`} />
       <Layout pageTitle="Home">
         <Title
           data={contentfulTitleText}
@@ -58,7 +61,6 @@ export default function IndexPage() {
         />
         <ContentBoxes data={allContentfulContentBoxes} />
       </Layout>
-      {/* </BgImage> */}
-    </>
+      </BgImage>
   )
 }

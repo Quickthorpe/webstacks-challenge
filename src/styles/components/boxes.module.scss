@@ -7,9 +7,9 @@
 
   .box {
     background-color: white;
-    width: 370px;
-    height: 240px;
     border-radius: 4px;
+    height: 240px;
+    width: 370px;
 
     .box_text {
       margin: 112px 32px 32px;
@@ -28,10 +28,10 @@
 
       .link {
         color: colors.$flamingo-orange;
-        text-decoration: none;
-        font-weight: 700;
         font-size: 0.9rem;
+        font-weight: 700;
         line-height: 17.43px;
+        text-decoration: none;
 
         > svg {
           margin-left: 8px;
@@ -46,16 +46,15 @@
     &._2K7z0eSoqHlvjT1f4zZAxf .photo {
       // the provided image for this one is pre-slanted, but the figma one is not
       // this leads to some size discrepancies between the images that need to be corrected
-      top: -312px;
-      right: -227px;
       height: 227px;
+      right: -227px;
+      top: -312px;
       width: 227px;
     }
 
     .photo {
-      position: relative;
-      top: -308px;
       right: -198px;
+      top: -317px;
     }
   }
 }
