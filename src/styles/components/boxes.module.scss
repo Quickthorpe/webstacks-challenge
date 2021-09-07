@@ -7,7 +7,7 @@
   justify-content: center;
   margin: 72px auto auto;
   max-width: 1170px;
-  padding: 0 36px;
+  padding: 0 36px 36px;
   width: 100%;
   width: stretch;
   width: -webkit-fill-available;
@@ -15,6 +15,10 @@
 
   @media screen and (min-width: breakpoints.$medium) {
     margin: 112px auto auto;
+  }
+
+  @media screen and (min-width: breakpoints.$medium) and (min-height: breakpoints.$large) {
+    margin: auto;
   }
 
   @media screen and (min-width: breakpoints.$x-large) {

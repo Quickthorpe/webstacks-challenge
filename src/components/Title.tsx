@@ -1,5 +1,5 @@
-import React from "react"
 import { Link } from "gatsby"
+import React from "react"
 
 import Data from "../interfaces/Data"
 import Arrow from "../assets/arrow.svg"
