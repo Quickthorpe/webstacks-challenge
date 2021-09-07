@@ -36,7 +36,9 @@ export default function NavBar() {
   return (
     <nav className={styles.navbar_container}>
       <div className={styles.navbar}>
-        <StaticImage src="../images/brackets-logo.svg" alt="Brackets Logo" />
+        <Link to="/">
+          <StaticImage src="../images/brackets-logo.svg" alt="Brackets Logo" />
+        </Link>
         {isDesktop ? (
           <div className={styles.nav_links}>
             {data?.nodes.map(({ linkText, isStart }) => (

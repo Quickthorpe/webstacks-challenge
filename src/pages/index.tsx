@@ -50,7 +50,7 @@ export default function IndexPage() {
 
   const image = getImage(backgroundImg.childImageSharp)
 
-  // BgImage className works but type incorrectly omits that prop. No time to fix.
+  // BgImage className works but type incorrectly omits that prop
   return (
     <>
       {/*
