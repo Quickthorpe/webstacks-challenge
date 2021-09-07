@@ -11,7 +11,11 @@
     text-align: start;
     margin: 26px auto;
     padding: 0 36px;
+    // 100% will cause overflow, but serves as backup for any browers missed by webkit/moz
     width: 100%;
+    width: stretch;
+    width: -webkit-fill-available;
+    width: -moz-available;
   }
 
   h5 {
@@ -45,9 +49,17 @@
   }
 
   .title_links {
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: breakpoints.$small) {
+      justify-content: start;
+    }
+
     a {
       border-radius: 3px;
       color: white;
+      display: block;
       font-size: 0.9rem;
       font-weight: 700;
       line-height: 17.43px;
