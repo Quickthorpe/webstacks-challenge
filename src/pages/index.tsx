@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { BgImage } from "gbimage-bridge"
 import { getImage } from "gatsby-plugin-image"
+import { BgImage } from "gbimage-bridge"
 import React from "react"
 
 import ContentBoxes from "../components/ContentBoxes"
@@ -54,7 +54,7 @@ export default function IndexPage() {
   return (
     <>
       {/*
-  // @ts-ignore */}
+      // @ts-ignore */}
       <BgImage image={image} className={styles.background}>
         <div className={`${styles.mask} ${styles.vertical}`} />
         <div className={`${styles.mask} ${styles.horizontal}`} />
@@ -63,7 +63,7 @@ export default function IndexPage() {
             data={contentfulTitleText}
             startText={allContentfulNavBarLinks}
           />
-          {/* <ContentBoxes data={allContentfulContentBoxes} /> */}
+          <ContentBoxes data={allContentfulContentBoxes} />
         </Layout>
       </BgImage>
     </>

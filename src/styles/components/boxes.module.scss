@@ -1,15 +1,40 @@
+@use '../partials/breakpoints';
 @use '../partials/colors';
 
 .boxes {
   display: flex;
-  justify-content: space-between;
-  margin: auto 265px 128px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 72px auto auto;
+  max-width: 1170px;
+  padding: 0 36px;
+  width: 100%;
+  width: stretch;
+  width: -webkit-fill-available;
+  width: -moz-available;
+
+  @media screen and (min-width: breakpoints.$medium) {
+    margin: 112px auto auto;
+  }
+
+  @media screen and (min-width: breakpoints.$x-large) {
+    justify-content: space-between;
+  }
 
   .box {
     background-color: white;
     border-radius: 4px;
     height: 240px;
     width: 370px;
+    margin: 18px 0;
+
+    @media screen and (min-width: breakpoints.$small) {
+      margin: 24px;
+    }
+
+    @media screen and (min-width: breakpoints.$x-large) {
+      margin: 0 3px;
+    }
 
     .box_text {
       margin: 112px 32px 32px;
@@ -46,15 +71,42 @@
     &._2K7z0eSoqHlvjT1f4zZAxf .photo {
       // the provided image for this one is pre-slanted, but the figma one is not
       // this leads to some size discrepancies between the images that need to be corrected
-      height: 227px;
-      right: -227px;
-      top: -312px;
-      width: 227px;
+      height: auto;
+      right: -136px;
+      top: -305px;
+      width: 182px;
+
+      @media screen and (min-width: breakpoints.$xx-small) {
+        right: -190px;
+      }
+
+      @media screen and (min-width: breakpoints.$x-small) {
+        right: -230px;
+        top: -285px;
+        width: 227px;
+      }
+
+      @media screen and (min-width: breakpoints.$small) {
+        right: -227px;
+        top: -296px;
+      }
     }
 
     .photo {
-      right: -198px;
-      top: -317px;
+      height: auto;
+      right: -132px;
+      top: -310px;
+      width: 136px;
+
+      @media screen and (min-width: breakpoints.$xx-small) {
+        right: -186px;
+      }
+
+      @media screen and (min-width: breakpoints.$x-small) {
+        right: -198px;
+        top: -317px;
+        width: auto;
+      }
     }
   }
 }

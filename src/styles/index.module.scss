@@ -15,7 +15,7 @@
     // in lieu of mobile mockup, defaulting to black backdrop
     background: black;
 
-    @media screen and (min-width: breakpoints.$medium) {
+    @media screen and (min-width: breakpoints.$large) {
       background: linear-gradient(90deg, black 20.29%, rgba(0, 0, 0, 0) 100%);
     }
   }
