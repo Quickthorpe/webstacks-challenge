@@ -1,3 +1,5 @@
+@use './partials/breakpoints';
+
 .mask {
   position: absolute;
   width: 100%;
@@ -5,14 +7,20 @@
   z-index: -10;
 
   &.vertical {
-    background: linear-gradient(
-      360deg,
-      #000000 13.96%,
-      rgba(0, 0, 0, 0) 107.34%
-    );
+    background: linear-gradient(360deg, black 13.96%, rgba(0, 0, 0, 0) 107.34%);
   }
 
   &.horizontal {
-    background: linear-gradient(90deg, #000000 20.29%, rgba(0, 0, 0, 0) 100%);
+    // background image is impractical at small viewwidths
+    // in lieu of mobile mockup, defaulting to black backdrop
+    background: black;
+
+    @media screen and (min-width: breakpoints.$medium) {
+      background: linear-gradient(90deg, black 20.29%, rgba(0, 0, 0, 0) 100%);
+    }
   }
+}
+
+.background {
+  background-position: right;
 }

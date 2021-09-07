@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import { BgImage } from "gbimage-bridge"
 import { getImage } from "gatsby-plugin-image"
-import * as React from "react"
+import React from "react"
 
 import ContentBoxes from "../components/ContentBoxes"
 import Layout from "../components/Layout"
@@ -34,7 +34,7 @@ export default function IndexPage() {
         bottomTag
         demoButton
       }
-      allContentfulContentBoxes(sort: {fields: createdAt}) {
+      allContentfulContentBoxes(sort: { fields: createdAt }) {
         nodes {
           contentful_id
           contentTitle
@@ -50,17 +50,22 @@ export default function IndexPage() {
 
   const image = getImage(backgroundImg.childImageSharp)
 
+  // BgImage className works but type incorrectly omits that prop. No time to fix.
   return (
-    <BgImage image={image}>
-      <div className={`${styles.mask} ${styles.vertical}`} />
-      <div className={`${styles.mask} ${styles.horizontal}`} />
-      <Layout pageTitle="Home">
-        {/* <Title
-          data={contentfulTitleText}
-          startText={allContentfulNavBarLinks}
-        />
-        <ContentBoxes data={allContentfulContentBoxes} /> */}
-      </Layout>
+    <>
+      {/*
+  // @ts-ignore */}
+      <BgImage image={image} className={styles.background}>
+        <div className={`${styles.mask} ${styles.vertical}`} />
+        <div className={`${styles.mask} ${styles.horizontal}`} />
+        <Layout pageTitle="Home">
+          {/* <Title
+            data={contentfulTitleText}
+            startText={allContentfulNavBarLinks}
+          />
+          <ContentBoxes data={allContentfulContentBoxes} /> */}
+        </Layout>
       </BgImage>
+    </>
   )
 }
