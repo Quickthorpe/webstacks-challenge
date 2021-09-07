@@ -1,6 +1,6 @@
-import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import React from "react"
 import { Menu, useMediaQuery } from "@material-ui/core"
 
 import Arrow from "../assets/arrow.svg"

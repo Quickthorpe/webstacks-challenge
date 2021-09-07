@@ -1,6 +1,7 @@
 import React from "react"
 
 import Layout from "../components/Layout"
+
 import * as styles from "../styles/layout.module.scss"
 
 export default function NotFoundPage() {
