@@ -1,6 +1,6 @@
 @use '../partials/colors';
 
-.navbar {
+.navbar_container {
   align-items: center;
   background: linear-gradient(
     180deg,
@@ -9,26 +9,33 @@
   );
   display: flex;
   height: 112px;
-  padding: 0 265px;
 
-  > .nav_links {
-    margin-left: auto;
+  .navbar {
+    align-items: center;
+    display: flex;
+    margin: auto;
+    max-width: 1170px;
+    width: 100%;
 
-    > a {
-      color: white;
-      font-size: 0.9rem;
-      font-weight: 700;
-      line-height: 17px;
-      margin: 0 16px;
-      text-decoration: none;
+    > .nav_links {
+      margin-left: auto;
 
-      &.start {
-        background-color: colors.$clear-blue;
-        border-radius: 3px;
-        padding: 12px 24px;
+      > a {
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 700;
+        line-height: 17px;
+        margin: 0 16px;
+        text-decoration: none;
 
-        > svg {
-          margin-left: 8px;
+        &.start {
+          background-color: colors.$clear-blue;
+          border-radius: 3px;
+          padding: 12px 24px;
+
+          > svg {
+            margin-left: 8px;
+          }
         }
       }
     }

@@ -55,11 +55,11 @@ export default function IndexPage() {
       <div className={`${styles.mask} ${styles.vertical}`} />
       <div className={`${styles.mask} ${styles.horizontal}`} />
       <Layout pageTitle="Home">
-        <Title
+        {/* <Title
           data={contentfulTitleText}
           startText={allContentfulNavBarLinks}
         />
-        <ContentBoxes data={allContentfulContentBoxes} />
+        <ContentBoxes data={allContentfulContentBoxes} /> */}
       </Layout>
       </BgImage>
   )
