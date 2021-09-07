@@ -1,6 +1,6 @@
 @use '../partials/colors';
 
-.navbar {
+.navbar_container {
   align-items: center;
   background: linear-gradient(
     180deg,
@@ -9,25 +9,77 @@
   );
   display: flex;
   height: 112px;
-  padding: 0 265px;
 
-  > .nav_links {
-    margin-left: auto;
+  .navbar {
+    align-items: center;
+    display: flex;
+    margin: auto;
+    max-width: 1170px;
+    padding: 36px;
+    width: 100%;
 
-    > a {
+    > .nav_links {
+      margin-left: auto;
+
+      > .menu_button {
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0);
+        border-radius: 4px;
+        border: solid 1px white;
+        color: white;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        width: 40px;
+      }
+
+      > a {
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 700;
+        line-height: 17px;
+        margin: 0 16px;
+        text-decoration: none;
+
+        &.start {
+          background-color: colors.$clear-blue;
+          border-radius: 3px;
+          padding: 12px 24px;
+
+          > svg {
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.menu div:nth-of-type(3) {
+  background-color: colors.$black-russion;
+  border-radius: 0;
+  top: 76px !important;
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+    min-width: 158px;
+    padding: 0;
+
+    > .menu_item {
       color: white;
-      font-size: 14.4px;
+      font-size: 0.9rem;
       font-weight: 700;
       line-height: 17px;
-      margin: 0 16px;
+      padding: 12px 0;
+      text-align: center;
       text-decoration: none;
+      width: 100%;
 
       &.start {
         background-color: colors.$clear-blue;
-        border-radius: 3px;
-        padding: 12px 24px;
 
-        > svg {
+        svg {
           margin-left: 8px;
         }
       }

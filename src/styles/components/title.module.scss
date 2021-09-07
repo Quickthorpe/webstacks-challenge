@@ -1,36 +1,67 @@
+@use '../partials/breakpoints';
 @use '../partials/colors';
 
 .title {
   color: white;
-  margin-left: 265px;
-  margin-top: 26px;
-  width: max-content;
+  max-width: 1170px;
+  text-align: center;
+  margin: 26px 16px;
+
+  @media screen and (min-width: breakpoints.$small) {
+    text-align: start;
+    margin: 26px auto;
+    padding: 0 36px;
+    // 100% will cause overflow, but serves as backup for any browers missed by webkit/moz
+    width: 100%;
+    width: stretch;
+    width: -webkit-fill-available;
+    width: -moz-available;
+  }
 
   h5 {
-    font-size: 18px;
+    font-size: 0.875rem;
     font-weight: 700;
-    line-height: 21.78px;
+    line-height: 20px;
     margin-bottom: 16px;
+
+    @media screen and (min-width: breakpoints.$small) {
+      font-size: 1.125rem;
+      line-height: 21.78px;
+    }
   }
 
   h1 {
-    font-size: 56px;
-    line-height: 67.77px;
+    font-size: 2.8rem;
+    line-height: 55px;
     margin-bottom: 24px;
-    max-width: 470px;
+
+    @media screen and (min-width: breakpoints.$small) {
+      font-size: 3.5rem;
+      line-height: 67.77px;
+      max-width: 470px;
+    }
   }
 
   p {
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 21.78px;
     margin-bottom: 28px;
   }
 
   .title_links {
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: breakpoints.$small) {
+      justify-content: start;
+    }
+
     a {
       border-radius: 3px;
       color: white;
-      font-size: 14.4px;
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
       line-height: 17.43px;
       padding: 12px 24px;
       text-decoration: none;
