@@ -17,8 +17,8 @@ export default function ContentBoxes({
       {data.nodes.map(({ contentTitle, contentDesc, contentImg, contentful_id }) => {
         const image = getImage(contentImg.gatsbyImageData)
 
-        console.log(contentful_id)
-
+        // ideally, would have a custom id for each field for targeted styling
+        // but contentful_id works in the meantime
         return (
           <div key={contentTitle} className={`${styles.box} ${styles[`_${contentful_id}`]}`}>
             <div className={styles.box_text}>
