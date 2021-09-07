@@ -1,23 +1,41 @@
+@use '../partials/breakpoints';
 @use '../partials/colors';
 
 .title {
   color: white;
-  margin-left: 265px;
-  margin-top: 26px;
-  width: max-content;
+  max-width: 1170px;
+  text-align: center;
+  margin: 26px 16px;
+
+  @media screen and (min-width: breakpoints.$small) {
+    text-align: start;
+    margin: 26px auto;
+    padding: 0 36px;
+    width: 100%;
+  }
 
   h5 {
-    font-size: 1.125rem;
+    font-size: 0.875rem;
     font-weight: 700;
-    line-height: 21.78px;
+    line-height: 20px;
     margin-bottom: 16px;
+
+    @media screen and (min-width: breakpoints.$small) {
+      font-size: 1.125rem;
+      line-height: 21.78px;
+    }
   }
 
   h1 {
-    font-size: 3.5rem;
-    line-height: 67.77px;
+    font-size: 2.8rem;
+    line-height: 55px;
     margin-bottom: 24px;
-    max-width: 470px;
+
+    @media screen and (min-width: breakpoints.$small) {
+      font-size: 3.5rem;
+      line-height: 67.77px;
+      max-width: 470px;
+    }
   }
 
   p {
