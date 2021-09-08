@@ -1,8 +1,8 @@
 import { Link } from "gatsby"
 import React from "react"
 
-import Data from "../interfaces/Data"
 import Arrow from "../assets/arrow.svg"
+import Data from "../interfaces/Data"
 
 import * as styles from "../styles/components/title.module.scss"
 

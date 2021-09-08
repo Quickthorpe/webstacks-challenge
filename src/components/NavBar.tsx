@@ -11,7 +11,7 @@ import * as styles from "../styles/components/navbar.module.scss"
 
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement>()
-  const isDesktop = useMediaQuery("(min-width: 768px")
+  const isDesktop = useMediaQuery("(min-width: 768px)")
 
   // ideally, would have parameter for sorting, but createdAt works for now in the interest of time
   const { allContentfulNavBarLinks: data } = useStaticQuery<Data>(graphql`

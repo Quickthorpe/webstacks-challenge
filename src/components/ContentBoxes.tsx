@@ -1,6 +1,6 @@
-import React from "react"
 import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import React from "react"
 
 import Arrow from "../assets/arrow.svg"
 import Data from "../interfaces/Data"
